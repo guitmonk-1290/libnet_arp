@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         usage(argv[0]);
     }
 
-    while((o=getopt(argc, argv, "i:t:s:m")) > 0) {
+    while((o=getopt(argc, argv, "i:t:s:m:")) > 0) {
         switch(o) {
             case 'i':
                 device = optarg;
