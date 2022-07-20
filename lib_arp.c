@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
     char o;
     in_addr_t ipaddr;       // claimed IP address
     in_addr_t destaddr;     // destination IP address
-    u_int8_t *macaddr;      // destination MAC address
+    uint8_t *macaddr;      // destination MAC address
     libnet_t *l;            // libnet context
     libnet_ptag_t arp=0,eth=0;      // libnet protocol blocks
     struct libnet_ether_addr *hwaddr;   // ethernet MAC address 
@@ -72,8 +72,8 @@ int main(int argc, char* argv[]) {
     
     /* build the ARP header */
     arp = libnet_autobuild_arp(ARPOP_REPLY,             // ARP msg type
-                        (uint_8_t *)hwaddr,             // source MAC address
-                        (uint_8_t *)&ipaddr,            // source IP address
+                        (uint8_t *)hwaddr,             // source MAC address
+                        (uint8_t *)&ipaddr,            // source IP address
                         macaddr,                        // destination MAC address
                         (uint8_t *)&destaddr,           // destination IP address
                         l);                             // current context
@@ -84,8 +84,8 @@ int main(int argc, char* argv[]) {
     }
 
     /* build the ethernet header */
-    eth = libnet_build_ethernet(macaddr                 // destination hardware address
-                               (uint_8_t *)hwaddr,      // source hardware address
+    eth = libnet_build_ethernet(macaddr,                 // destination hardware address
+                               (uint8_t *)hwaddr,      // source hardware address
                                ETHERTYPE_ARP,           // type of encapsulated packet
                                NULL,                    // pointer to payload
                                0,                       // size of payload
